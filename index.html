@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine For Darshan ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff6a88,#ff99ac);
+    font-family:'Segoe UI', sans-serif;
+    overflow:hidden;
+}
+
+/* Main Card */
+.main-card{
+    width:380px;
+    height:500px;
+    background:rgba(255,255,255,0.9);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.3);
+    position:relative;
+    text-align:center;
+    padding-top:70px;
+}
+
+h1{
+    color:#e91e63;
+    text-shadow:0 0 10px #ff80ab;
+}
+
+/* Button */
+.open-btn{
+    margin-top:20px;
+    padding:12px 30px;
+    border:none;
+    background:#e91e63;
+    color:white;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.open-btn:hover{
+    background:#c2185b;
+    transform:scale(1.1);
+}
+
+/* Small Cards */
+.card{
+    width:250px;
+    height:150px;
+    background:linear-gradient(135deg,#ffe0ec,#ffd6e8);
+    border-radius:15px;
+    position:absolute;
+    top:180px;
+    left:65px;
+    padding:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    transform:scale(0);
+    transition:0.6s ease;
+}
+
+.card h3{
+    margin:5px 0;
+    color:#d81b60;
+}
+
+.card p{
+    font-size:14px;
+    color:#444;
+}
+
+/* Different Directions */
+.show-left{
+    transform:translateX(-220px) scale(1);
+}
+.show-right{
+    transform:translateX(220px) scale(1);
+}
+.show-up{
+    transform:translateY(-200px) scale(1);
+}
+
+/* Floating Hearts */
+.heart{
+    position:absolute;
+    width:15px;
+    height:15px;
+    background:red;
+    transform:rotate(-45deg);
+    animation:float 4s linear infinite;
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    width:15px;
+    height:15px;
+    background:red;
+    border-radius:50%;
+}
+
+.heart::before{ top:-8px; left:0; }
+.heart::after{ left:8px; top:0; }
+
+@keyframes float{
+    0%{bottom:-10px; opacity:1;}
+    100%{bottom:100%; opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="main-card">
+    <h1>Happy Valentine's Day 💖</h1>
+    <button class="open-btn" onclick="openCards()">Open Surprise 💌</button>
+
+    <!-- Card 1 -->
+    <div class="card" id="card1">
+        <h3>For Darshan 💘</h3>
+        <p>You are my today and all of my tomorrows ❤️</p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card" id="card2">
+        <h3>Romantic Shayari 🌹</h3>
+        <p>
+        "Tere bina adhuri si lagti hai zindagi meri,<br>
+        Darshan tu hi meri khushi, tu hi meri bandagi."
+        </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card" id="card3">
+        <h3>Forever Promise 💍</h3>
+        <p>I promise to stay with you forever and always 💞</p>
+    </div>
+
+</div>
+
+<script>
+function openCards(){
+    document.getElementById("card1").classList.add("show-left");
+    document.getElementById("card2").classList.add("show-right");
+    document.getElementById("card3").classList.add("show-up");
+    createHearts();
+}
+
+function createHearts(){
+    for(let i=0;i<25;i++){
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.animationDuration=(Math.random()*3+2)+"s";
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },4000);
+    }
+}
+</script>
+
+</body>
+</html>
